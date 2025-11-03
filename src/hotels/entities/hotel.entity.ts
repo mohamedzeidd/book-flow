@@ -1,4 +1,5 @@
 import { IsNumber, IsString } from 'class-validator';
+import { Room } from 'src/rooms/entities/room.entity';
 import {
   Column,
   CreateDateColumn,
@@ -28,4 +29,7 @@ export class Hotel {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(() => Room, (room) => room.hotel, { cascade: true })
+  rooms: Room[];
 }
