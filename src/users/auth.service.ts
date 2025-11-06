@@ -93,11 +93,12 @@ export class AuthService {
     );
     if (!isValidPassword) throw new BadRequestException('Invalid credentials');
 
-    const accessToken = this.generateAccessToken({
+    const accessToken = await this.generateAccessToken({
       id: user.id,
       role: user.role,
       isActive: user.isActive,
     });
+
     let refreshToken = user.token;
     if (!refreshToken) refreshToken = await this.generateRefreshToken(user);
     await this.usersRepository.update(user.id, { token: refreshToken });

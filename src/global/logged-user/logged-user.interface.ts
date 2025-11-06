@@ -1,3 +1,4 @@
+import { PERMISSIONS } from '../constants/permissions.constants';
 import { Roles } from '../constants/roles.constants';
 
 export interface JwtPayload {
@@ -10,4 +11,5 @@ export interface LoggedUser {
   id?: string;
   role: Roles;
   isActive: boolean;
+  permissions:PERMISSIONS[]
 }
